@@ -1,0 +1,4 @@
+#Remove Useless Files:
+a.out
+*.gcda
+*.o

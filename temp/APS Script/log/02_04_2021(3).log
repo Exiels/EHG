@@ -1,0 +1,13 @@
+Script APS started. [02/04/2021 | 15:04]
+
+
+[15:04:43]	Called initProjectMem function.
+[15:04:43]	Project_mem file already exist.
+[15:04:43]	Called initLib function.
+[15:04:43]	Lib Backup up to date.
+[15:04:43]	Called copyProjectStruct function.
+[15:04:43]	Copying Project struct file common to => /home/exiel/Projets/Perso/C-Project/EHG
+[15:04:43]	Called end function.
+
+
+Script APS ended. [02/04/2021 | 15:04]

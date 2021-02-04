@@ -1,0 +1,20 @@
+TO DO :
+☐ - Add lib functions :
+                        ☐ - Can Update the lib on all project stored in a file (diff backup lib and original lib)
+                        ☐ - Create a save of the lib
+                        ☐ - Update the lib if needed into the lib repos
+
+☐ - Add "do project struct" functions :
+                        ✔ - Copy all Project file depending on the project (common, graphical, math) in the selected dir @done (19/01/2021 à 10:50:06)
+                        ✔ - Can accept 3 args : -m -c -g @done (19/01/2021 à 10:50:08)
+                        ✔ - Compile the lib @done (21/01/2021 à 13:46:45)
+                        ✔ - Push the project on the repos with the "Init Commit" commit message @done (21/01/2021 à 13:47:13)
+                        ☐ - Command second arg : The path to dir.
+
+☐ - Add update functions :
+                        ☐ - Update the Project struct on all project stored in a file
+                        ☐ - Push the new updated Project on their repos with the "Updated project structure" commit message
+                        ☐ - Push the project on the repos with the commit message.
+
+☐ - Add check functions :
+                        ☐ - Check if unwanted file are in the project dir
