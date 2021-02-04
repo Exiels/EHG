@@ -6,7 +6,8 @@
 ##
 
 SRC =	src/main.c			\
-		src/errorhandler.c
+		src/errorhandler.c	\
+		src/init_struct.c
 
 TESTS =
 
@@ -15,7 +16,8 @@ OBJ = $(SRC:%.c=$(BUILD_DIR)/%.o)
 CC = gcc
 CFLAGS = -I include/ -L./lib -lmy
 DFLAGS = -W -Wall
-NAME =
+DEBUGFLAGS = -g
+NAME = ehg
 
 .PHONY: lib clean
 
@@ -32,6 +34,10 @@ lib:
 $(NAME): $(OBJ)
 			@echo "\n\n\n\033[92mCompiling a Common Project.\033[0m\n\n\n"
 			gcc $(DFLAGS) -o $(NAME) $(OBJ) $(CFLAGS)
+
+debug: fclean $(OBJ)
+			@echo "\n\n\n\033[91mDebuging a Common Project.\033[0m\n\n\n"
+			gcc $(DFLAGS) $(DEBUGFLAGS) -o $(NAME) $(OBJ) $(CFLAGS)
 
 clean:
 			rm -f $(OBJ)

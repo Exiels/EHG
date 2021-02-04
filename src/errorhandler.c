@@ -11,7 +11,7 @@
 int error_handler(int error_id)
 {
     switch (error_id) {
-        case 0:
+        case NORMAL:
             return (NORMAL);
             break;
         default: my_printf("%w", "ERROR: Unknown Error.\n");

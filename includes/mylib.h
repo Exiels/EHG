@@ -250,10 +250,10 @@
     //my_utils
         //csfml
 
-            /// \brief Calc the time elipsed from clock
-            /// \param clock The sfClock
-            /// \return Return the time elipsed from clock
-            float timer(sfClock *clock);
+        /// \brief Calc the time elipsed from clock
+        /// \param clock The sfClock
+        /// \return Return the time elipsed from clock
+        float timer(sfClock *clock);
 
         /// \brief Print a sentence in color on the stdout
         /// \param str The string to be colored
