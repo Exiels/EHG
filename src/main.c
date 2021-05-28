@@ -1,44 +1,52 @@
 /*
 ** EPITECH PROJECT, 2021
-** main
+** main file of EHG
 ** File description:
-** Main File
+** main
 */
 
-#include "../includes/my.h"
-#include "../includes/mylib.h"
+#include "ehg.h"
 
-void destroy(gen_t *general)
+static void help(void)
 {
-    free(general->config_file->file_cntn);
-    for (int i = 0; i != general->config_file->nb_rows; i++) {
-        free(general->config_file->file_array[i]);
-    }
-    free(general->config_file->file_array);
-    free(general->config_file);
-    free(general);
+    printf("USAGE: ehg [-h] [-r]\n\n");
+    printf("OPTIONAL ARGUMENTS:\n");
+    printf("   -h, --help\t\tShow this help message and exit\n");
+    printf("   -r, --reset\t\tReset totally the ehg configuration\n");
 }
 
-void config_to_2darray(file_t *file)
+static void param_handler(int argc, char **argv, gen_t *gen)
 {
-    for (int i = 0; file->file_cntn[i] != '\0'; i++) {
-        if (file->file_cntn[i] == '\n' ||
-            file->file_cntn[i] == '\0')
-            file->nb_rows++;
+    int long_opt = 0;
+    static struct option long_options[] = {
+        {"reset",   no_argument, 0,  'r' },
+        {"help",    no_argument, 0,  'h' },
+        {0,         0,           0,  0 }
+    };
+    while ((long_opt = getopt_long(argc, argv, "rh", long_options, NULL)) != -1) {
+        switch (long_opt) {
+            case 'r': reset_ehg(gen);
+                destroy(gen);
+                exit(NORMAL);
+                break;
+            case 'h': help();
+                destroy(gen);
+                exit(NORMAL);
+                break;
+            case '?': error_handler(PARAMETER_ERROR);
+                break;
+            default: error_handler(PARAMETER_ERROR);
+                break;
+        }
     }
-    file->file_array = malloc(sizeof(char *) * file->nb_rows);
-    for (int i = 0; i != file->nb_rows; i++)
-        file->file_array[i] = malloc(sizeof(char) * BUFF_SIZE);
 }
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
-    gen_t *general = init_gen();
+    gen_t *gen = init_gen();
 
-    general->config_file->file_cntn = my_sreadfile(argv[1]);
-    config_to_2darray(general->config_file);
-    printf("nb_rows :%d\n", general->config_file->nb_rows);
-    printf("%s\n", general->config_file->file_cntn);
-    destroy(general);
+    param_handler(argc, argv, gen);
+    init_config(gen);
+    destroy(gen);
     return (error_handler(NORMAL));
 }

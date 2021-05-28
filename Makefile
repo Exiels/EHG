@@ -1,66 +1,109 @@
 ##
 ## EPITECH PROJECT, 2020
-## Makefile
+## Exiel Makefile
 ## File description:
-## Makefile
+## The Makefile created by Exiel for his projects
 ##
 
-SRC =	src/main.c			\
-		src/errorhandler.c	\
-		src/init_struct.c
-
-TESTS =
+SRC =	src/main.c					\
+		src/errorhandler.c			\
+		src/init_config.c			\
+		src/init_struct.c			\
+		src/utils.c					\
+\
+		src/init_ehg/init_ehg.c		\
+\
+		src/lib_handler/lib_utils.c
 
 BUILD_DIR = build
 OBJ = $(SRC:%.c=$(BUILD_DIR)/%.o)
 CC = gcc
-CFLAGS = -I include/ -L./lib -lmy
-DFLAGS = -W -Wall
-DEBUGFLAGS = -g
-NAME = ehg
+CFLAGS = -W -Wall -Wextra -I includes/ -L./lib -lecl -lconfig
+EXEC = ehg
 
-.PHONY: lib clean
+#Mandatory rules
 
-all: lib $(NAME)
+all: lib head h_normal $(EXEC)
+
+$(EXEC): $(OBJ)
+			@gcc -o $(EXEC) $(OBJ) $(CFLAGS)
+			@cp $(EXEC) tests/
+			@echo
+			@echo "Compilation Finished"
+
+clean:
+			@rm -f $(OBJ)
+			rm -f *.gcda
+			rm -f *.gcno
+			@echo
+
+fclean: clean
+			rm -f $(EXEC)
+			rm -f unit_tests
+			@echo
+
+re: fclean lib head h_normal $(EXEC)
+
+#Additional rules
 
 $(BUILD_DIR)/%.o: %.c
 					@mkdir -p $(@D)
-					@echo "  CC       $<"
+					@echo -e "\x1b[32m  GCC       $<\x1b[0m"
 					@$(CC) $(CFLAGS) -c $< -o $@
 
-lib:
-			make -C lib/my/
+head:
 
-$(NAME): $(OBJ)
-			@echo "\n\n\n\033[92mCompiling a Common Project.\033[0m\n\n\n"
-			gcc $(DFLAGS) -o $(NAME) $(OBJ) $(CFLAGS)
+                       
+                       
+			@echo
+			@echo
+			@echo "╔══════════════════════════╗"
+			@echo "║   ______ _    _  _____   ║"
+			@echo "║  |  ____| |  | |/ ____|  ║"
+			@echo "║  | |__  | |__| | |  __   ║"
+			@echo "║  |  __| |  __  | | |_ |  ║"
+			@echo "║  | |____| |  | | |__| |  ║"
+			@echo "║  |______|_|  |_|\_____|  ║"
+			@echo "║                          ║"
 
+h_normal:
+			@echo "║       Compiling EHG      ║"
+			@echo "╚══════════════════════════╝"
+			@echo
+
+h_debug:
+			@echo "║       Debuging EHG       ║"
+			@echo "╚══════════════════════════╝"
+			@echo
+
+debug: CFLAGS += -g
 debug: fclean $(OBJ)
-			@echo "\n\n\n\033[91mDebuging a Common Project.\033[0m\n\n\n"
-			gcc $(DFLAGS) $(DEBUGFLAGS) -o $(NAME) $(OBJ) $(CFLAGS)
+			@gcc -o $(EXEC) $(OBJ) $(CFLAGS)
+			@echo
+			@echo "----------------------------------"
+			@echo
+			@echo -e "\x1b[31m  WARNING\x1b[0m"
+			@echo -e "\x1b[31mDEBUG CALLED\x1b[0m"
+			@echo
+			@echo -n "PROGRAM ARGUMENTS(Enter for None): "; \
+			read PROGRAM_ARGUMENTS; \
+			valgrind --track-origins=yes --leak-check=full ./$(EXEC) $${PROGRAM_ARGUMENTS} 2> valgrind_trace
 
-clean:
-			rm -f $(OBJ)
-			rm -f *.gcda
-			rm -f *.gcno
-
-fclean: clean
-			rm -f $(NAME)
-			rm -f unit_tests
-			rm -f *.gcda
-			rm -f *.gcno
-			clear
-
-unit_tests: fclean
-			gcc -o unit_tests $(SRC) $(TESTS) --coverage -lcriterion
-
-run_tests: unit_tests
-			./unit_tests
+lib:
+			make re -C lib/exielcl
 
 pushgit: fclean
-			clear
-			git add -A
-			git commit -m "$(filter-out $@, $(MAKECMDGOALS))"
+			@echo
+			@echo "----------------------------------"
+			@echo
+			@echo -e "\x1b[31m    WARNING\x1b[0m"
+			@echo -e "\x1b[31mPUSHGIT  CALLED\x1b[0m"
+			@echo
+			@echo -n "Are you sure? [y/N] " && read ans && [ $${ans:-N} = y ]
+			@git add -A
+			@echo -n "NAME OF THE COMMIT: "; \
+			read COMMIT_NAME; \
+			git commit -m "$${COMMIT_NAME}"
 			git push
 
-re: fclean $(NAME)
+.PHONY: lib clean fclean

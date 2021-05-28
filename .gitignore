@@ -1,4 +1,12 @@
 #Remove Useless Files:
+build/
+trace
 a.out
 *.gcda
 *.o
+valgrind_trace
+ehg
+vscode*
+libecl.a
+vgcore*
+.vscode
