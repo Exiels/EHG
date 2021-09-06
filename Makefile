@@ -10,10 +10,15 @@ SRC =	src/main.c					\
 		src/init_config.c			\
 		src/init_struct.c			\
 		src/utils.c					\
+		src/opthandler.c			\
 \
 		src/init_ehg/init_ehg.c		\
 \
-		src/lib_handler/lib_utils.c
+		src/lib_handler/lib_utils.c	\
+\
+		src/commands/help.c			\
+		src/commands/reinstall.c	\
+		src/commands/reset.c		
 
 BUILD_DIR = build
 OBJ = $(SRC:%.c=$(BUILD_DIR)/%.o)

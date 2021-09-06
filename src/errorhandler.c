@@ -28,6 +28,12 @@ int error_handler(int error_id)
             break;
         case CANNOT_READ_CONFIG_FILE: exit(ERROR);
             break;
+        case LIB_DIR_DOESNT_EXIST: fprintf(stderr, "%sERROR: THE LIB DIR DOESN'T EXIST.\n%s", RED, RESET);
+            return(ERROR);
+            break;
+        case PROJECT_STRUCT_DIR_DOESNT_EXIST: fprintf(stderr, "%sERROR: THE PROJECT STRUCT DIR DOESN'T EXIST.\n%s", RED, RESET);
+            return(ERROR);
+            break;
         default: fprintf(stderr, "%sERROR: UNKNOWN ERROR.\n%s", RED, RESET);
             exit(ERROR);
             break;
