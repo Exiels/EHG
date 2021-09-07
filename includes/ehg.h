@@ -32,8 +32,7 @@
         #define CANNOT_CREATE_CONFIG_FILE           0x4
         #define CANNOT_DELETE_CONFIG_FILE           0x5
         #define PARAMETER_ERROR                     0x6
-        #define LIB_DIR_DOESNT_EXIST                0x7
-        #define PROJECT_STRUCT_DIR_DOESNT_EXIST     0x8
+        #define INVALID_PATH                        0x7
 
 //Includes:
     #include "ehg_proto.h"
