@@ -31,6 +31,15 @@ int error_handler(int error_id)
         case INVALID_PATH: fprintf(stderr, "\n\n%sERROR: INVALID PATH.\n%s", RED, RESET);
             return(ERROR);
             break;
+        case CONFIG_FILE_NOT_SET: fprintf(stderr, "\n\n%sERROR: CONFIG FILE NOT SET.\n%s", RED, RESET);
+            exit(ERROR);
+            break;
+        case PROJECT_STRUCT_PATH_NOT_SET: fprintf(stderr, "\n\n%sERROR: PROJECT STRUCT PATH NOT SET.\n%s", RED, RESET);
+            exit(ERROR);
+            break;
+        case LIB_PATH_NOT_SET: fprintf(stderr, "\n\n%sERROR: LIB PATH NOT SET.\n%s", RED, RESET);
+            exit(ERROR);
+            break;
         default: fprintf(stderr, "%sERROR: UNKNOWN ERROR.\n%s", RED, RESET);
             exit(ERROR);
             break;

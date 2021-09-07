@@ -10,3 +10,5 @@ vscode*
 libecl.a
 vgcore*
 .vscode
+tests/
+project_dir/

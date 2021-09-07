@@ -14,9 +14,10 @@ void param_handler(int argc, char **argv, gen_t *gen)
         {"reset",   no_argument, 0,  'r' },
         {"reinstall",   no_argument, 0,  'R' },
         {"help",    no_argument, 0,  'h' },
+        {"new_project", no_argument, 0, 'n' },
         {0,         0,           0,  0 }
     };
-    while ((long_opt = getopt_long(argc, argv, "rh", long_options, NULL)) != -1) {
+    while ((long_opt = getopt_long(argc, argv, "rRhn", long_options, NULL)) != -1) {
         switch (long_opt) {
             case 'r': reset_ehg(gen);
                 destroy(gen);
@@ -27,6 +28,10 @@ void param_handler(int argc, char **argv, gen_t *gen)
                 exit(NORMAL);
                 break;
             case 'R': 
+                destroy(gen);
+                exit(NORMAL);
+                break;
+            case 'n': new_project(gen);
                 destroy(gen);
                 exit(NORMAL);
                 break;

@@ -33,6 +33,9 @@
         #define CANNOT_DELETE_CONFIG_FILE           0x5
         #define PARAMETER_ERROR                     0x6
         #define INVALID_PATH                        0x7
+        #define CONFIG_FILE_NOT_SET                 0x8
+        #define PROJECT_STRUCT_PATH_NOT_SET         0x9
+        #define LIB_PATH_NOT_SET                    0x10
 
 //Includes:
     #include "ehg_proto.h"

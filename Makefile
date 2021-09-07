@@ -18,7 +18,8 @@ SRC =	src/main.c					\
 \
 		src/commands/help.c			\
 		src/commands/reinstall.c	\
-		src/commands/reset.c		
+		src/commands/reset.c		\
+		src/commands/new_project.c	
 
 BUILD_DIR = build
 OBJ = $(SRC:%.c=$(BUILD_DIR)/%.o)

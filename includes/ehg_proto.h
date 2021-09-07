@@ -27,4 +27,6 @@
             void reset_ehg(gen_t *gen);
         //reinstall.c
             void reinstall_ehg(gen_t *gen);
+        //new_project.c
+            void new_project(gen_t *gen);
 #endif /* !EHG_PROTO_H_ */

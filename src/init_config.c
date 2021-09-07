@@ -16,7 +16,7 @@ static void set_lib_path(config_setting_t *setting)
     if (!lib) {     //Check if the lib group Exist on the config file
         lib = config_setting_add(setting, "lib_path", CONFIG_TYPE_STRING);
         do {
-            printf("Enter your lib dir path: ");
+            printf("Enter the full lib dir path: ");
             fgets(lib_path, 2048, stdin);
             lib_path[strcspn(lib_path, "\n")] = '\0';
             if (0 != access(lib_path, F_OK))
@@ -36,7 +36,7 @@ static void set_p_dir_path(config_setting_t *setting)
     if (!p_struct) {     //Check if the p_struct group Exist on the config file
         p_struct = config_setting_add(setting, "project_struct_path", CONFIG_TYPE_STRING);
         do {
-            printf("Enter your project_struct dir path: ");
+            printf("Enter the full project_struct dir path: ");
             fgets(p_struct_path, 2048, stdin);
             p_struct_path[strcspn(p_struct_path, "\n")] = '\0';
             if (0 != access(p_struct_path, F_OK))
@@ -56,7 +56,7 @@ static void set_logs_path(config_setting_t *setting)
     if (!logs) {     //Check if the p_struct group Exist on the config file
         logs = config_setting_add(setting, "logs_path", CONFIG_TYPE_STRING);
         do {
-            printf("Enter the logs dir path: ");
+            printf("Enter the full logs dir path: ");
             fgets(logs_path, 2048, stdin);
             logs_path[strcspn(logs_path, "\n")] = '\0';
             if (0 != access(logs_path, F_OK))
@@ -80,7 +80,7 @@ static void first_setup_guide(config_setting_t *setting)
         printf("Hello and welcome to EHG ! The best software for every Epitech student !\n");
         printf("I'm here to guide you through the setup process.\n\n");
         printf("I need you to give me some path to your lib, log and project_dir template.\n");
-        printf("Press any Enter to continue...\n");
+        printf("Press Enter to continue...\n");
         getchar();
         printf("\e[1;1H\e[2J");
     }
